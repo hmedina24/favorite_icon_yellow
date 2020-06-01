@@ -1,16 +1,18 @@
 //----Interface Begin----
-@interface CNContactContentViewController: UIView {
+@interface CNPropertyPhoneNumberCell: UIView {
 	UIView * _view;
 }
 //----Properties----
-@property (nonatomic,retain) CNContactAddFavoriteAction * addFavoriteAction; 
+//@property (nonatomic,retain) CNContactAddFavoriteAction * addFavoriteAction; 
 @end
 //----Interface End----
 //----Hook Begin---- 
-%hook CNContactContentViewController
+%hook CNPropertyPhoneNumberCell
 //Method
--(void)setAddFavoriteAction:(CNContactAddFavoriteAction *)arg1{
+-(void)viewDidLoad{
+	UIView * myView = MSHookIvar<UIView *>(self, "_view");
 
+	myView.backgroundColor = [UIColor redColor];
 }
 %end
 //----Hook End----
