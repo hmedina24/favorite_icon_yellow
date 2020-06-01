@@ -18,11 +18,34 @@
 
 
 
-@interface CNPropertyPhoneNumberCell: UITableViewCell
-@end
 
-@interface CNPropertySimpleTransportCell
-@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #include <substrate.h>
@@ -45,29 +68,25 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class CNPropertyPhoneNumberCell; @class CNPropertySimpleTransportCell; 
-static void (*_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setText$)(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST, SEL, id); static void _logos_method$_ungrouped$CNPropertyPhoneNumberCell$setText$(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST, SEL, id); static BOOL (*_logos_orig$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar)(_LOGOS_SELF_TYPE_NORMAL CNPropertySimpleTransportCell* _LOGOS_SELF_CONST, SEL); static BOOL _logos_method$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar(_LOGOS_SELF_TYPE_NORMAL CNPropertySimpleTransportCell* _LOGOS_SELF_CONST, SEL); 
+@class CNContactContentViewController; 
+static void (*_logos_orig$_ungrouped$CNContactContentViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL CNContactContentViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$CNContactContentViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL CNContactContentViewController* _LOGOS_SELF_CONST, SEL); 
 
-#line 26 "Tweak.xm"
-
-
-static void _logos_method$_ungrouped$CNPropertyPhoneNumberCell$setText$(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1) {
-
-	_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setText$(self, _cmd, @"DID THIS WORK???");
+#line 49 "Tweak.xm"
+@interface CNContactContentViewController : UIViewController <CNPropertyActionDelegate, CNPropertyCellDelegate, CNPropertyGroupItemDelegate, CNContactGroupPickerDelegate, UIPopoverControllerDelegate, CNContactHeaderViewDelegate, CNContactContentViewControllerDelegate, UIAdaptivePresentationControllerDelegate, CNShareLocationProtocol, CNUIObjectViewControllerDelegate, CNContactInlineActionsViewControllerDelegate_Internal, CNUIGeminiDataSourceDelegate, NSUserActivityDelegate, CNUIEditAuthorizationControllerDelegate, CNContactActionDelegate, CNPresenterDelegate, CNContactContentViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerRestoration> {
 
 }
+@property (nonatomic,retain) NSString * message;   
+@end
 
-
-
-
-
-static BOOL _logos_method$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar(_LOGOS_SELF_TYPE_NORMAL CNPropertySimpleTransportCell* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
+static void _logos_method$_ungrouped$CNContactContentViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL CNContactContentViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd){
+	_logos_orig$_ungrouped$CNContactContentViewController$viewDidLoad(self, _cmd);
 	
-	return false;
-
+	UILabel *iphoneLabel = MSHookIvar<UILabel *>(self, "_UILabel");
+	if ([message.text isEqualToString:@"Recent"]){
+		iphoneLabel.text = @"⭐";
+	}
 }
-
 
 static __attribute__((constructor)) void _logosLocalInit() {
-{Class _logos_class$_ungrouped$CNPropertyPhoneNumberCell = objc_getClass("CNPropertyPhoneNumberCell"); MSHookMessageEx(_logos_class$_ungrouped$CNPropertyPhoneNumberCell, @selector(setText:), (IMP)&_logos_method$_ungrouped$CNPropertyPhoneNumberCell$setText$, (IMP*)&_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setText$);Class _logos_class$_ungrouped$CNPropertySimpleTransportCell = objc_getClass("CNPropertySimpleTransportCell"); MSHookMessageEx(_logos_class$_ungrouped$CNPropertySimpleTransportCell, @selector(shouldShowStar), (IMP)&_logos_method$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar, (IMP*)&_logos_orig$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar);} }
-#line 45 "Tweak.xm"
+{Class _logos_class$_ungrouped$CNContactContentViewController = objc_getClass("CNContactContentViewController"); MSHookMessageEx(_logos_class$_ungrouped$CNContactContentViewController, @selector(viewDidLoad), (IMP)&_logos_method$_ungrouped$CNContactContentViewController$viewDidLoad, (IMP*)&_logos_orig$_ungrouped$CNContactContentViewController$viewDidLoad);} }
+#line 64 "Tweak.xm"

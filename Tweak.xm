@@ -17,7 +17,7 @@
 }
 %end
 //----Hook End---- */
-@interface CNPropertyPhoneNumberCell: UITableViewCell
+/*@interface CNPropertyPhoneNumberCell: UITableViewCell
 @end
 
 @interface CNPropertySimpleTransportCell
@@ -25,9 +25,11 @@
 
 %hook CNPropertyPhoneNumberCell
 
-- (void)setText:(id)arg1 {
+- (void)setFrame:(CGRect)arg1 {
 
-	%orig(@"DID THIS WORK???");
+	%orig;
+
+	
 
 }
 
@@ -36,9 +38,26 @@
 %hook CNPropertySimpleTransportCell
 
 - (BOOL)shouldShowStar {
-	
+	UILabel *iphoneLabel = MSHookIvar<UILabel *>(self, "_UIImage");
+
+	iphoneLabel.text = @"⭐";
 	return false;
 
 }
 
+%end*/
+@interface CNContactContentViewController : UIViewController {
+
+}
+@property (nonatomic,retain) NSString * message;   
+@end
+%hook CNContactContentViewController
+-(void)viewDidLoad{
+	%orig;
+	
+	UILabel *iphoneLabel = MSHookIvar<UILabel *>(self, "_UILabel");
+	if ([message.text isEqualToString:@"Recent"]){
+		iphoneLabel.text = @"⭐";
+	}
+}
 %end
