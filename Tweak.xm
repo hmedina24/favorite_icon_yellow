@@ -31,6 +31,20 @@
 
 }
 
+- (void)setFrame:(CGRect)arg1 {
+
+	%orig;
+
+	UILabel *iphoneLabel = MSHookIvar<UILabel *>(self, "_textLabel");
+
+	if ([iphoneLabel.text isEqualToString:@"iPhone"]) {
+
+		iphoneLabel.text = @"TEST";
+
+	}
+
+}
+
 %end
 
 %hook CNPropertySimpleTransportCell
