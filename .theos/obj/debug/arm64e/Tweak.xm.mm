@@ -1,12 +1,28 @@
 #line 1 "Tweak.xm"
 
-@interface CNPropertyPhoneNumberCell: UIView {
-	UIView * _view;
-}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@interface CNPropertyPhoneNumberCell: UITableViewCell
 @end
 
+@interface CNPropertySimpleTransportCell
+@end
 
 
 #include <substrate.h>
@@ -29,20 +45,29 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class CNPropertyPhoneNumberCell; 
-static void (*_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setProperty$)(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST, SEL, id); static void _logos_method$_ungrouped$CNPropertyPhoneNumberCell$setProperty$(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST, SEL, id); 
+@class CNPropertyPhoneNumberCell; @class CNPropertySimpleTransportCell; 
+static void (*_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setText$)(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST, SEL, id); static void _logos_method$_ungrouped$CNPropertyPhoneNumberCell$setText$(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST, SEL, id); static BOOL (*_logos_orig$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar)(_LOGOS_SELF_TYPE_NORMAL CNPropertySimpleTransportCell* _LOGOS_SELF_CONST, SEL); static BOOL _logos_method$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar(_LOGOS_SELF_TYPE_NORMAL CNPropertySimpleTransportCell* _LOGOS_SELF_CONST, SEL); 
 
-#line 10 "Tweak.xm"
+#line 26 "Tweak.xm"
 
 
-static void _logos_method$_ungrouped$CNPropertyPhoneNumberCell$setProperty$(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1){
+static void _logos_method$_ungrouped$CNPropertyPhoneNumberCell$setText$(_LOGOS_SELF_TYPE_NORMAL CNPropertyPhoneNumberCell* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1) {
 
-	UIView * myView = MSHookIvar<UIView *>(self, "_view");
+	_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setText$(self, _cmd, @"DID THIS WORK???");
 
-	myView.backgroundColor = [UIColor redColor];
+}
+
+
+
+
+
+static BOOL _logos_method$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar(_LOGOS_SELF_TYPE_NORMAL CNPropertySimpleTransportCell* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
+	
+	return false;
+
 }
 
 
 static __attribute__((constructor)) void _logosLocalInit() {
-{Class _logos_class$_ungrouped$CNPropertyPhoneNumberCell = objc_getClass("CNPropertyPhoneNumberCell"); MSHookMessageEx(_logos_class$_ungrouped$CNPropertyPhoneNumberCell, @selector(setProperty:), (IMP)&_logos_method$_ungrouped$CNPropertyPhoneNumberCell$setProperty$, (IMP*)&_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setProperty$);} }
-#line 20 "Tweak.xm"
+{Class _logos_class$_ungrouped$CNPropertyPhoneNumberCell = objc_getClass("CNPropertyPhoneNumberCell"); MSHookMessageEx(_logos_class$_ungrouped$CNPropertyPhoneNumberCell, @selector(setText:), (IMP)&_logos_method$_ungrouped$CNPropertyPhoneNumberCell$setText$, (IMP*)&_logos_orig$_ungrouped$CNPropertyPhoneNumberCell$setText$);Class _logos_class$_ungrouped$CNPropertySimpleTransportCell = objc_getClass("CNPropertySimpleTransportCell"); MSHookMessageEx(_logos_class$_ungrouped$CNPropertySimpleTransportCell, @selector(shouldShowStar), (IMP)&_logos_method$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar, (IMP*)&_logos_orig$_ungrouped$CNPropertySimpleTransportCell$shouldShowStar);} }
+#line 45 "Tweak.xm"
