@@ -17,14 +17,23 @@
 }
 %end
 //----Hook End---- */
+@interface CNPropertyPhoneNumberCell: UITableViewCell{
+
+}
+@end
+
+%hook CNPropertyPhoneNumberCell
+
+%end
 
 @interface CNPropertySimpleTransportCell
+
 @end
 
 %hook CNPropertySimpleTransportCell
 
 - (BOOL)shouldShowStar {
-
+	
 	return false;
 
 }
