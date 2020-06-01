@@ -17,18 +17,21 @@
 }
 %end
 //----Hook End---- */
-@interface CNPropertyPhoneNumberCell: UITableViewCell{
+@interface CNPropertyPhoneNumberCell: UITableViewCell
+@end
 
-}
+@interface CNPropertySimpleTransportCell
 @end
 
 %hook CNPropertyPhoneNumberCell
 
+- (void)setText:(id)arg1 {
+
+	%orig(@"DID THIS WORK???");
+
+}
+
 %end
-
-@interface CNPropertySimpleTransportCell
-
-@end
 
 %hook CNPropertySimpleTransportCell
 
