@@ -1,4 +1,4 @@
-//----Interface Begin----
+/* //----Interface Begin----
 @interface CNPropertyPhoneNumberCell : CNPropertySimpleTransportCell{
 	UIView * _view;
 }
@@ -16,4 +16,17 @@
 	myView.backgroundColor = [UIColor redColor];
 }
 %end
-//----Hook End----
+//----Hook End---- */
+
+@interface CNPropertySimpleTransportCell
+@end
+
+%hook CNPropertySimpleTransportCell
+
+- (BOOL)shouldShowStar {
+
+	return false;
+
+}
+
+%end
