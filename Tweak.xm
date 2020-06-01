@@ -1,5 +1,5 @@
 //----Interface Begin----
-@interface CNPropertyPhoneNumberCell: UIView {
+@interface CNPropertyPhoneNumberCell : CNPropertySimpleTransportCell{
 	UIView * _view;
 }
 //----Properties----
@@ -9,7 +9,8 @@
 //----Hook Begin---- 
 %hook CNPropertyPhoneNumberCell
 //Method
--(void)viewDidLoad{
+-(void)setProperty:(id)arg1{
+
 	UIView * myView = MSHookIvar<UIView *>(self, "_view");
 
 	myView.backgroundColor = [UIColor redColor];
