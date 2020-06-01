@@ -1,0 +1,9 @@
+Package: com.yourcompany.project01
+Name: project01
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Hector Medina
+Author: Hector Medina
+Section: Tweaks
